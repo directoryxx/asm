@@ -1,0 +1,23 @@
+     1                                  section .data
+     2 00000000 48656C6C6F2C20576F-         hello db "Hello, World", 0; Null-terminated string
+     2 00000009 726C6400           
+     3                                  
+     4                                  section .bss
+     5                                  section .text
+     6                                      global main
+     7                                  
+     8                                  main:
+     9                                  
+    10                                      ; Write 'Hello, World' to stdout (file descriptor 1)
+    11 00000000 B801000000                  mov rax, 1      ; syscall number for sys_write
+    12 00000005 BF01000000                  mov rdi, 1      ; fil descriptor 1 (stdout)
+    13 0000000A 48BE-                       mov rsi, hello  ; pointer to the string to write
+    13 0000000C [0000000000000000] 
+    14 00000014 BA0C000000                  mov rdx, 12     ; length of the string "hello"
+    15 00000019 0F05                        syscall         ; invoke the system call
+    16                                  
+    17                                      ; exit the program
+    18                                  
+    19 0000001B B83C000000                  mov rax, 60     ; syscall number for sys_exit
+    20 00000020 4831FF                      xor rdi, rdi    ; return code 0
+    21 00000023 0F05                        syscall         ; invoke the system call
