@@ -1,0 +1,11 @@
+1. preprocessing
+Command: gcc -E -P myapp.c > preprocessing/output
+
+2. compilation
+Command: gcc -S -masm=intel myapp.c && mv myapp.s compilation/
+
+3. assembly
+Command: gcc -c myapp.c && mv myapp.o assembly/
+
+4. linking
+Command: gcc myapp.c && mv a.out linking/
